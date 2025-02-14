@@ -231,7 +231,7 @@
 
     <div class="love-notes-container"></div>
     
-    <div class="pulsing-heart">❤️</div>
+    <div class="pulsing-heart" onclick="startMusic()">❤️</div>
     
     <div id="lantern-container"></div>
 
@@ -305,8 +305,10 @@
     </script>
     
     <script>
-        var audio = document.getElementById("background-music");
-        audio.volume = 0.1;
+        function startMusic() {
+    var audio = document.getElementById('background-music');
+    audio.play(); // Запускаем музыку
+}
       </script>
 
     <script>
