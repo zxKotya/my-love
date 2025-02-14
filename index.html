@@ -305,9 +305,21 @@
     </script>
     
     <script>
-        function startMusic() {
-    var audio = document.getElementById('background-music');
-    audio.play(); // Запускаем музыку
+        let audioContext = null;
+let audioElement = document.getElementById('background-music');
+let audioSourceNode = null;
+
+function startMusic() {
+    // Создаём новый AudioContext, если он ещё не был создан
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        // Создаём источник для воспроизведения
+        audioSourceNode = audioContext.createMediaElementSource(audioElement);
+        // Подключаем источник к выходу звука
+        audioSourceNode.connect(audioContext.destination);
+        // Запускаем воспроизведение аудио
+        audioElement.play();
+    }
 }
       </script>
 
